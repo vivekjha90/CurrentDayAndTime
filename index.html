@@ -1,0 +1,100 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>current day and time</title>
+  <style>
+ #cont{
+  height: 300px;
+  width:360px;
+  background-color: rgb(58, 68, 77);
+  color: rgb(62, 235, 201);
+ padding: 10px;
+ box-shadow: 5px 10px 20px rgb(223, 237, 89);
+ border-radius: 20px;
+ position: absolute;
+ top: 50%;
+ left: 50%;
+ transform: translate(-50%,-50%);
+ }
+ #day{
+ font-size: 39px;
+text-align: center;
+padding: 19px;
+margin-top: 4rem;
+ }
+#time{
+font-size: 42px;
+text-align: center;
+}
+body{
+  background-color: rgb(81, 252, 212);
+}
+#greetings{
+  background-color: rgba(245, 245, 52, 0.87);
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 29px;
+  text-align: center;
+  box-shadow: 5px 10px black;
+  height: 40px;
+  width: 150px;
+  position: absolute;
+ top: 10%;
+ left: 50%;
+ transform: translate(-50%,-50%);
+}
+button{
+  position: absolute;
+ top: 80%;
+ left: 50%;
+ transform: translate(-50%,-50%);
+ height: 40px;
+  width: 250px;
+  font-size: 23px;
+  background-color: rgba(245, 245, 52, 0.87);
+  padding: 7px;
+  border-radius: 8px;
+  box-shadow: 5px 7px black;
+  cursor: pointer;
+}
+  </style>
+  <script>
+     function getCurrentDayAndTime(){
+      const daysOfTheWeek=["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+      const now=new Date();
+      const day=daysOfTheWeek[now.getDay()];
+      let hours=now.getHours();
+      let minutes=now.getMinutes();
+      let seconds=now.getSeconds();
+      const ampm= hours >= 12 ? 'Pm' : 'Am';
+      hours=hours%12;
+      hours=hours?hours:12;
+      const formattedtime=`${hours}${ampm}:${minutes.toString().padStart(2,'0')}:${seconds.toString().padStart(2,'0')}`;
+      
+      document.getElementById("day").innerText=`Today is: ${day} `;
+      
+      document.getElementById("time").innerText=`current time is: ${formattedtime}`;
+    }
+     window.onload=getCurrentDayAndTime;
+      setInterval(getCurrentDayAndTime,1000);
+      let bt=document.querySelector("#btn");
+      let c=document.querySelector("#details");
+      bt.onclick=function(){
+          c.textContent="jjjj";
+      }
+  
+    
+  </script>
+</head>
+<body>
+  <div id="greetings"><b>Hello!</b></div>
+    <div id="cont">
+    <div id="day"></div>
+    <div id="time"></div>
+    </div>
+    <button id="btn"><b>Crafted By <a href="https://www.linkedin.com/in/vivek-jha-237b54226/">@vivek</a></b></button>
+   
+</body>
+</html> 
